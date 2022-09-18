@@ -1,4 +1,17 @@
-const addDays = require("date-fns/addDays");
+const express = require("express");
+const app = express();
 
-const result = addDays(new Date(2021, 0, 29), 3);
-console.log(result);
+app.get("/", (request, response) => {
+  response.send("Hello Akkala Manoj");
+});
+
+app.get("/date", (request, response) => {
+  let date = new Date();
+  response.send(`Today's date is ${date}`);
+});
+
+app.get("/page", (request, response) => {
+  response.sendFile("./page.html", { root: __dirname });
+});
+
+app.listen(3000);
